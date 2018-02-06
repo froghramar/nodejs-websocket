@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-websocket",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm run server",
+    "server": "node server/index.js"
+  },
+  "dependencies": {
+    "browser-websocket": "^2.2.0",
+    "ws": "^4.0.0"
+  }
+}
