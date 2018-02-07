@@ -1,24 +1,6 @@
 require('dotenv').config();
 const WebSocket = require('ws');
-const logger = require('winston');
-
-const myCustomLevels = {
-    levels: {
-        client: 0,
-        server: 1,
-        info: 2,
-        important: 3
-    },
-    colors: {
-        client: 'green',
-        server: 'blue',
-        info: 'black',
-        important: 'red'
-    }
-};
-
-logger.setLevels(myCustomLevels.levels);
-logger.addColors(myCustomLevels.colors);
+const logger = require('./logger');
 
 const wss = new WebSocket.Server({
     port: process.env.SERVER_PORT
