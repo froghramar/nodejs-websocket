@@ -1,13 +1,13 @@
-var ws = new BrowserWebSocket('ws://localhost:3030');
+const ws = new BrowserWebSocket('ws://localhost:3030');
 
 ws.on('open', function() {
     sendMessage({
-        text: "Hello World"
+        text: "Hello Server"
     });
 });
 
 ws.on('message', function(e) {
-    var message = e.data;
+    const message = JSON.parse(e.data);
     console.log(message);
 });
 
