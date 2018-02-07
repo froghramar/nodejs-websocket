@@ -7,6 +7,7 @@ const wss = new WebSocket.Server({
 });
 
 wss.on('connection', function connection(ws) {
+    ws.on('end', () => console.log('ended'));
     ws.on('message', function (message) {
         receiveMessage(message);
         broadcast({
@@ -23,7 +24,9 @@ function broadcast(message) {
     logger.server(message);
     wss.clients.forEach(function each(client) {
         if (client.readyState === WebSocket.OPEN) {
-            client.send(JSON.stringify(message));
+            client.send(JSON.stringify(message), function (err) {
+                client.terminate();
+            });
         }
     });
 }
